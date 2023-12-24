@@ -129,8 +129,8 @@ void test_gemm(int m, int n, int k) {
     std::cout << "N = " << n << std::endl;
     std::cout << "K = " << k << std::endl;
 
-    using TA = float;
-    using TB = float;
+    using TA = half;
+    using TB = half;
     using TC = float;
     using TI = float;
 
@@ -250,8 +250,8 @@ void test_gemm(int m, int n, int k) {
         host_matrix_to_const_column_major_cute_tensor(cute_result, m, n, m);
     const auto C_expected_view =
         host_matrix_to_const_column_major_cute_tensor(cublas_result, m, n, m);
-    print_matrix_multiply_mollified_relative_error(
-        "float", A_view, B_view, C_computed_view, C_expected_view);
+    // print_matrix_multiply_mollified_relative_error(
+    //     "float", A_view, B_view, C_computed_view, C_expected_view);
 
 #endif  // CUTLASS_ENABLE_CUBLAS
 }

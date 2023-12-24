@@ -2,7 +2,7 @@
 机器型号为 Nvidia A100
 
 ## Naive WMMA GEMM 测试
-M, N, K, in_dtype, acc_dtype, cost(ms), TFLOPS
+M, N, K, in_dtype, acc_dtype, cost(ms), TFLOPS 
 5376, 5376, 2048, float16, float32, 3.59057 32.9697
 
 ## matmul_for_perf 测试
@@ -71,6 +71,26 @@ M, N, K, in_dtype, acc_dtype, cost(ms), TFLOPS
 ```
 
 ## Cute 测试
+```
+FLOAT32, FLOAT32
+Using device 0: NVIDIA A100 80GB PCIe  (SM80, 108 SMs)
+M = 5376
+N = 5376
+K = 2048
+CUBLAS_GEMM:   [18680.4]GFlop/s  (6.3371)ms
+Using shared memory = 65.536 KB.
+Computing result values...
+CUTE_GEMM:     [15712.6]GFlop/s  (7.5341)ms
+Empirical Perf: 84.1%
+Matrix A: 5376x2048 of float
+Matrix B: 5376x2048 of float
+Matrix C: 5376x5376 of float
+Infinity norm of A: 1.076773e+03
+Infinity norm of B: 1.074607e+03
+Infinity norm of C: 6.834768e+04
+Infinity norm of (C - C_ref): 0.000000e+00
+Relative error: 0.000000e+00
+```
 
 ## Cublas 测试
 ```
